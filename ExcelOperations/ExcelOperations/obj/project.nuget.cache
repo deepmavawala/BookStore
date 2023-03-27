@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "kkHGigV/jIP6lvgFsgC4z94KrJmPIIYEou9l6jwxptjraO11lhvGxuZANA/y/sEkdxJ/mAUHCYtw+6IQ7KNdzA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\deep.mavavala\\source\\repos\\BookStore\\ExcelOperations\\ExcelOperations\\ExcelOperations.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\deep.mavavala\\.nuget\\packages\\exceldatareader\\3.6.0\\exceldatareader.3.6.0.nupkg.sha512",
+    "C:\\Users\\deep.mavavala\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
+    "C:\\Users\\deep.mavavala\\.nuget\\packages\\system.text.encoding.codepages\\6.0.0\\system.text.encoding.codepages.6.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
