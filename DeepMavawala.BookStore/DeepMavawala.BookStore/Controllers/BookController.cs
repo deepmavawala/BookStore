@@ -14,7 +14,7 @@ namespace DeepMavawala.BookStore.Controllers
 		public ViewResult GetAllBooks()
 		{
 			var data = bookRepository.GetAllBooks();
-			return View();
+			return View(data);
 		}
 		public BookModel GetBook(int id)
 		{
