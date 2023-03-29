@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\DeepMavawala.Ecommerce.props" />
+</Project>
