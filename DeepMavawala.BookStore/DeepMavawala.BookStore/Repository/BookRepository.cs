@@ -19,7 +19,8 @@ namespace DeepMavawala.BookStore.Repository
 				CreatedOn = DateTime.UtcNow,
 				Description = model.Description,
 				Title = model.Title,
-				TotalPages = model.TotalPages,
+				Language = model.Language,
+				TotalPages = model.TotalPages.HasValue ? model.TotalPages.Value : 0,
 				UpdatedOn = DateTime.UtcNow,
 			};
 			await _context.Books.AddAsync(newBook);
@@ -46,11 +47,26 @@ namespace DeepMavawala.BookStore.Repository
 					});
 				}
 			}
-			return _books();
+			return books;
 		}
-		public BookModel GetBookById(int id) 
+		public async Task<BookModel> GetBookById(int id) 
 		{
-			return _books().Where(x => x.Id == id).FirstOrDefault();
+			var data = await _context.Books.FindAsync(id);
+			if(data!=null)
+			{
+				var bookdetails = new BookModel()
+				{
+                    Author = data.Author,
+                    Category = data.Category,
+                    Description = data.Description,
+                    Title = data.Title,
+                    TotalPages = data.TotalPages,
+                    Language = data.Language,
+                    Id = data.Id,
+                };
+				return bookdetails;
+			}
+			return null;
 		}
 		public List<BookModel> SearchBook(string title,string AuthorName) 
 		{

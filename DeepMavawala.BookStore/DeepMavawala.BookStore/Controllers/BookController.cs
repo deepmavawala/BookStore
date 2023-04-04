@@ -17,9 +17,9 @@ namespace DeepMavawala.BookStore.Controllers
 			var data =await _bookRepository.GetAllBooks();
 			return View(data);
 		}
-		public ViewResult GetBook(int id)
+		public async Task<ViewResult> GetBook(int id)
 		{
-			var data= _bookRepository.GetBookById(id);
+			var data= await _bookRepository.GetBookById(id);
 			return View(data);
 		}
 		public List<BookModel> SearchBook(string bookname,string authorname)
@@ -28,6 +28,11 @@ namespace DeepMavawala.BookStore.Controllers
 		}
 		public ViewResult AddNewBook(bool isSuccess = false,int bookId =0) 
 		{
+			//var model = new BookModel() 
+			//{
+			//	Language="English"
+			//};
+			ViewBag.Language = new List<string>() {"Hindi","English","Dutch"};
 			ViewBag.IsSuccess = isSuccess;
 			ViewBag.BookId = bookId;
 			return View(); 
@@ -35,11 +40,16 @@ namespace DeepMavawala.BookStore.Controllers
 		[HttpPost]
         public async Task<IActionResult> AddNewBook(BookModel bookModel)
         {
-			int id= await _bookRepository.AddNewBook(bookModel);
-			if(id>0) 
+			if(ModelState.IsValid)
 			{
-				return RedirectToAction(nameof(AddNewBook), new {isSuccess = true, bookId = id});
-			}
+                int id = await _bookRepository.AddNewBook(bookModel);
+                if (id > 0)
+                {
+                    return RedirectToAction(nameof(AddNewBook), new { isSuccess = true, bookId = id });
+                }
+            }
+            ViewBag.Language = new List<string>() { "Hindi", "English", "Dutch" };
+            ModelState.AddModelError("", "This is my custom error message");
             return View();
         }
     }
