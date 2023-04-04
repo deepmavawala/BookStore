@@ -14,8 +14,10 @@ namespace DeepMavawala.BookStore.Models
 		public string Description { get; set; }
 		public string Category { get; set; }
 		public string Language { get; set; }
-		[Display(Name ="Total pages of Book")]
-		[Required(ErrorMessage ="Please enter the total pages of your book")]
-		public int? TotalPages { get; set; }
+        [Required(ErrorMessage = "Please choose the language of your book")]
+        public List<string> MultiLanguage { get; set; }
+        [Display(Name = "Total pages of Book")]
+        [Required(ErrorMessage = "Please enter the total pages of your book")]
+        public int? TotalPages { get; set; }
 	}
 }
