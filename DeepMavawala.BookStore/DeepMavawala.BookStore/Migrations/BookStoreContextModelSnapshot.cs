@@ -26,7 +26,6 @@ namespace DeepMavawala.BookStore.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Author")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("Category")
@@ -36,17 +35,15 @@ namespace DeepMavawala.BookStore.Migrations
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("Language")
-                        .HasColumnType("longtext");
+                    b.Property<int?>("LanguageId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Title")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<int>("TotalPages")
+                    b.Property<int?>("TotalPages")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("UpdatedOn")
@@ -54,7 +51,40 @@ namespace DeepMavawala.BookStore.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("LanguageId");
+
                     b.ToTable("Books");
+                });
+
+            modelBuilder.Entity("DeepMavawala.BookStore.Data.Language", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Language");
+                });
+
+            modelBuilder.Entity("DeepMavawala.BookStore.Data.Books", b =>
+                {
+                    b.HasOne("DeepMavawala.BookStore.Data.Language", "Language")
+                        .WithMany("Books")
+                        .HasForeignKey("LanguageId");
+
+                    b.Navigation("Language");
+                });
+
+            modelBuilder.Entity("DeepMavawala.BookStore.Data.Language", b =>
+                {
+                    b.Navigation("Books");
                 });
 #pragma warning restore 612, 618
         }

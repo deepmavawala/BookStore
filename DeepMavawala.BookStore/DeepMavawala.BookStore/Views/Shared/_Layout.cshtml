@@ -28,7 +28,7 @@
                     </ul>
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="home" asp-action="index" >Home</a>
+                            <a class="nav-link text-dark" asp-controller="home" asp-action="index">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-controller="home" asp-action="aboutus">About</a>
@@ -37,7 +37,7 @@
                             <a class="nav-link text-dark" asp-controller="home" asp-action="contactus">Contact</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark"  asp-controller="book" asp-action="getallbooks">All Books</a>
+                            <a class="nav-link text-dark" asp-controller="book" asp-action="getallbooks">All Books</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-controller="book" asp-action="addnewbook">Add new book</a>
@@ -48,11 +48,11 @@
         </nav>
     </header>
     @*<nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item"><a href="#">Page1</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Page2</li>
-        </ol>
+    <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="#">Home</a></li>
+    <li class="breadcrumb-item"><a href="#">Page1</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Page2</li>
+    </ol>
     </nav>*@
     @RenderSection("breadcrumb", required: false)
     <main role="main">
